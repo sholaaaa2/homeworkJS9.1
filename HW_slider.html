@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{display: flex;justify-content: center;align-items: center;}
+    .container{
+      height: 300px;
+      width: 300px;
+    }
+    .container img{
+      height: 300px;
+      position:absolute;
+      opacity: 0;
+      transition: .5s all;
+    }
+    .container img:nth-child(1){
+      opacity: 1;
+    }
+    button{margin: 10px;}
+  </style>
+</head>
+<body>
+  <button id="prev" type="button" name="button">Previous</button>
+  <div class="container">
+    <img src="./img/1.jfif" alt="1">
+    <img src="./img/2.jfif" alt="2">
+    <img src="./img/3.jfif" alt="3">
+    <img src="./img/4.jfif" alt="4">
+    <img src="./img/5.jfif" alt="5">
+    <img src="./img/6.jfif" alt="6">
+  </div>
+  <button id="next" type="button" name="button">Next</button>
+
+  <script>
+    const prev = document.querySelector("#prev");
+    const next = document.querySelector("#next");
+    const img = document.querySelectorAll(".container img");
+    let i = 0;
+    next.onclick = () =>{
+      img[i].style.opacity = '0';
+      if (i==img.length-1) {
+        i=0;
+        img[i].style.opacity = '1';
+      }
+      else {
+        img[i+1].style.opacity = '1';
+        i++
+      }
+    };
+    prev.onclick = () =>{
+      img[i].style.opacity = '0';
+      if (i==0) {
+        i=img.length-1;
+        img[i].style.opacity = '1';
+      }
+      else {
+        img[i-1].style.opacity = '1';
+        i--
+      }
+    }
+  </script>
+</body>
+</html>
